@@ -24,4 +24,14 @@ def main():
     print(f'SAT: {sat}')
     print(f'SOLN: {soln}')
 
+# n: number of propositional variables that we can use
+# k: number of literals in clause
+def generate_clause(n, k):
+    return list(
+        map(
+            lambda x: x * choice([1,-1]),
+            sample(range(1,n+1), k)
+        )
+    )
+
 main()
