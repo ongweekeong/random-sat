@@ -7,9 +7,14 @@ from random import *
 
 from pycryptosat import Solver
 
+NUM_EXP = 50 # number of experiments to run per set of random params
+
 def main():
-    s = Solver()
-    print(experiment_many(3, 150, 10, 50))
+    n = 150
+    for k in range(3,6):
+        for r5 in range(0, 51):
+            r = r5/5
+            print(f'k:{k} r:{r} count:{experiment_many(k, n, r, NUM_EXP)}')
 
 def experiment_many(k, n, r, times):
     sat_count = 0
@@ -19,7 +24,7 @@ def experiment_many(k, n, r, times):
     return sat_count
 
 def experiment_once(s, k, n, r):
-    for i in range(r * n):
+    for i in range(round(r*n)):
         s.add_clause(generate_clause(n,k))
     sat,_ = s.solve()
     return sat
