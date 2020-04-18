@@ -7,18 +7,15 @@ from random import *
 
 from pycryptosat import Solver
 
-def main():
+def main(): 
     s = Solver()
+    print(experiment_once(s, 3, 150, 10))
 
-    # give_formula
-
-    sat, soln = s.solve()
-    print(f'SAT: {sat}')
-    print(f'SOLN: {soln}')
-
-def give_formula(s, k, n, r):
+def experiment_once(s, k, n, r):
     for i in range(r * n):
         s.add_clause(generate_clause(n,k))
+    sat,_ = s.solve()
+    return sat
 
 # n: number of propositional variables that we can use
 # k: number of literals in clause
