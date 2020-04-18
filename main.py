@@ -10,19 +10,15 @@ from pycryptosat import Solver
 def main():
     s = Solver()
 
-    s.add_clause([-1,2,3])
-    s.add_clause([1,3,4])
-    s.add_clause([1,3,-4])
-    s.add_clause([1,-3,4])
-    s.add_clause([1,-3,-4])
-    s.add_clause([-2,-3,4])
-    s.add_clause([-1,2,-3])
-    s.add_clause([-1,-2,3])
-    s.add_clause([-1])
+    # give_formula
 
     sat, soln = s.solve()
     print(f'SAT: {sat}')
     print(f'SOLN: {soln}')
+
+def give_formula(s, k, n, r):
+    for i in range(r * n):
+        s.add_clause(generate_clause(n,k))
 
 # n: number of propositional variables that we can use
 # k: number of literals in clause
