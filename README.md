@@ -3,5 +3,4 @@
 For consistency with problem statement, **the first prop var is 1, not 0.**
 
 ### Dependencies
-* `pycryptosat`(https://pypi.org/project/pycryptosat/)
-
+* `pysat.solvers` (https://github.com/pysathq/pysat)
